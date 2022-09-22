@@ -54,3 +54,15 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
+a {
+  text-decoration: none;
+}
+
+.weather-temperature .active {
+  text-decoration: none;
+  color: black;
+  cursor: default;
+}
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
