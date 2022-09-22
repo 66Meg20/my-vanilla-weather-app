@@ -1,5 +1,27 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let cityElement = document.querySelector("#city");
@@ -10,10 +32,12 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windspeedElement = document.querySelector("#wind-speed");
   windspeedElement.innerHTML = Math.round(response.data.wind.speed);
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 let apiKey = "eef40191214dcd4323d0468de9b004d0";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=amarillo&appid=${apiKey}&units=imperial`;
-console.log(apiUrl);
+let city = "amarillo";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
 axios.get(apiUrl).then(displayTemperature);
