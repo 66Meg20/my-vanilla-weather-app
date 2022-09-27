@@ -66,3 +66,21 @@ a {
 .weather-temperature .active:hover {
   text-decoration: none;
 }
+.weather-forecast {
+  color: rgb(135, 135, 135);
+  margin-top: 20px;
+}
+.weather-forecast img {
+  display: block;
+  margin: 0auto;
+}
+.weather-forecast-date {
+  font-size: 16px;
+  opacity: 0.6;
+}
+.weather-forecast-temperature {
+  font-size: 13px;
+}
+.weather-forecast-temperature-min {
+  opacity: 0.6;
+}
