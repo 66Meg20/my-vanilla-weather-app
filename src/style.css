@@ -6,6 +6,7 @@ body {
   padding: 20px;
   border: 1px solid #dadce0;
   border-radius: 5px;
+  background: linear-gradient(to top, #0250c5 0%, #d43f8d 100%);
 }
 .weather-app-wrapper {
   max-width: 600px;
@@ -20,7 +21,7 @@ body {
   width: 64px;
 }
 .weather-temperature strong {
-  color: rgb (33, 33, 33);
+  color: #ff6bd6;
   font-size: 64px;
   line-height: 1;
   font-weight: 400;
@@ -30,7 +31,7 @@ body {
 }
 
 h1 {
-  color: #878787;
+  color: #00eaff;
   font-size: 24px;
   font-weight: 100;
   line-height: 28px;
@@ -46,7 +47,7 @@ li {
   margin: 0;
   padding: 0;
 
-  color: rgb(135, 135, 135);
+  color: #ff6bd6;
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
@@ -60,14 +61,14 @@ a {
 
 .weather-temperature .active {
   text-decoration: none;
-  color: black;
+  color: #ff6bd6;
   cursor: default;
 }
 .weather-temperature .active:hover {
   text-decoration: none;
 }
 .weather-forecast {
-  color: rgb(135, 135, 135);
+  color: #ff6bd6;
   margin-top: 20px;
 }
 .weather-forecast img {
