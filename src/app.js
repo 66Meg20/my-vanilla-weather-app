@@ -1,13 +1,22 @@
 function formatDate(timestamp) {
+  let dtFormat = new Intl.DateTimeFormat(`en-US`, {
+    hour: `numeric`,
+    minute: `numeric`,
+  });
   let date = new Date(timestamp);
-  let hours = date.getHours();
+  let hours = dtFormat.format(date.getHours());
+  if (hours === 0) {
+    hours = `12${hours}`;
+  }
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = date.getMinutes();
+
+  let minutes = dtFormat.format(date.getMinutes());
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+
   let days = [
     "Sunday",
     "Monday",
@@ -18,7 +27,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  return `${day}${dtFormat.format(date)}`;
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -28,10 +37,8 @@ function formatDay(timestamp) {
   return days[day];
 }
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Mon", "Tue", "Wed", "Thu"];
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
@@ -64,10 +71,8 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "eb9542c65e739e0fb25ade97c749e2aa";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
